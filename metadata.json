@@ -1,0 +1,7 @@
+{
+  "name": "RATEC - Soluções Inteligentes",
+  "description": "Uma agência de tecnologia de ponta focada em soluções inteligentes, IA e automação, com estética moderna em tons de fúcsia e roxo.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
