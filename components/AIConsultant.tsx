@@ -120,7 +120,6 @@ const AIConsultant: React.FC = () => {
                     placeholder="DIGITE SEU COMANDO OU PERGUNTA PARA O CORE..."
                     className="flex-1 bg-transparent border-none text-cyan-50 font-mono text-sm focus:ring-0 placeholder:text-slate-800 tracking-[0.1em] uppercase h-12"
                     disabled={isLoading}
-                    autoFocus
                   />
                   <button 
                     type="submit"

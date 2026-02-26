@@ -28,9 +28,14 @@ const App: React.FC = () => {
             <p className="text-slate-400">
               Entre em contato conosco hoje mesmo e descubra como podemos ajudar a transformar sua visão em uma solução inteligente de alto impacto.
             </p>
-            <button className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white font-bold py-4 px-12 rounded-full shadow-[0_0_30px_rgba(217,70,239,0.4)] transition-all transform hover:scale-105">
+            <a 
+              href="https://api.whatsapp.com/send/?phone=5562981173666&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+a+Ratec&type=phone_number&app_absent=0" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white font-bold py-4 px-12 rounded-full shadow-[0_0_30px_rgba(217,70,239,0.4)] transition-all transform hover:scale-105"
+            >
               FALE COM UM ESPECIALISTA
-            </button>
+            </a>
           </div>
         </div>
       </section>
