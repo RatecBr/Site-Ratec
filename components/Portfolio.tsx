@@ -42,6 +42,37 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
 
+        {/* Featured Large Project */}
+        <div className="mb-12">
+          <a 
+            href="https://uaucode.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group relative overflow-hidden border border-white/5 hover:border-cyan-500/50 transition-all duration-700 cursor-pointer bg-slate-900 min-h-[500px] rounded-3xl block"
+          >
+            <div className="absolute inset-0 grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000">
+              <img 
+                src="/Banner_uaucode.jpg" 
+                alt="UAU Code - Plataforma de Elite"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-12 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
+                  <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.3em]">PROJETO_MASTER_V1.5</p>
+                </div>
+                <div className="w-2 h-2 rounded-full bg-fuchsia-500 animate-pulse"></div>
+              </div>
+              <h3 className="font-orbitron font-black text-4xl md:text-6xl leading-tight text-white mb-8 uppercase tracking-tighter">UAU CODE <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">EXPERIENCE</span></h3>
+              <p className="text-slate-300 max-w-2xl mb-10 font-light text-lg leading-relaxed">Desenvolvimento completo de ecossistema SaaS com IA generativa, pagamentos integrados e arquitetura de alta escala.</p>
+              <div className="max-w-xs py-5 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white text-[12px] font-black uppercase tracking-[0.4em] transition-all shadow-2xl font-orbitron rounded-xl text-center">
+                ACESSAR_PROJETO_FULL
+              </div>
+            </div>
+          </a>
+        </div>
+
         <div className="grid md:grid-cols-4 gap-4">
           {projects.map((project, idx) => (
             <a 
