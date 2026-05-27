@@ -1,5 +1,5 @@
 import React from 'react';
-import { IcCode, IcGlobe, IcSpark, IcLayers, IcBolt, IcShield } from './Icons';
+import { IcCode, IcGlobe, IcSpark, IcLayers } from './Icons';
 
 interface CapItem {
   icon: React.ReactNode;
@@ -12,8 +12,6 @@ const CAPS: CapItem[] = [
   { icon: <IcGlobe />, t: "Apps mobile e PWAs", d: "Experiências em iOS, Android e Web — uma base, três alvos." },
   { icon: <IcSpark />, t: "Produtos com IA", d: "Visão computacional, fala, NLP e modelos LLM integrados ao seu fluxo." },
   { icon: <IcLayers />, t: "Plataformas SaaS", d: "Multi-tenant, billing, painel admin e API pública prontos para escalar." },
-  { icon: <IcBolt />, t: "Integrações & APIs", d: "Pagamentos, ERPs, mensageria, webhooks. Conectamos o que precisar." },
-  { icon: <IcShield />, t: "Operação contínua", d: "Não entregamos e somem. Mantemos, monitoramos e evoluímos com você." },
 ];
 
 const Capabilities: React.FC = () => {

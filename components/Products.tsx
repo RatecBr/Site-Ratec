@@ -1,72 +1,26 @@
 import React from 'react';
-import { IcArrow, IcCheck, IcPlay } from './Icons';
+import { IcArrow, IcCheck } from './Icons';
 
 export function UAUScene() {
   return (
-    <div className="scene uau-scene">
-      <div className="uau-phone">
-        <div className="uau-phone-screen">
-          <div className="uau-status">
-            <span className="pulse"></span> RECONHECENDO IMAGEM
-          </div>
-          <div className="uau-target">
-            <div className="play">
-              <IcPlay size={18} />
-            </div>
-          </div>
-          <div className="uau-cap">
-            <div className="uau-cap-title">Cartão de visita · RATEC</div>
-            Vídeo de apresentação · 0:42 · toque para abrir
-          </div>
-        </div>
-      </div>
+    <div className="scene uau-scene" style={{ padding: 0 }}>
+      <img
+        src="/assets/uau_desktop.png"
+        alt="UAU Code Dashboard"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
     </div>
   );
 }
 
 export function AudiverScene() {
-  const bars = [
-    22, 38, 60, 80, 95, 70, 50, 78, 92, 64, 40, 26, 48, 70, 88, 72, 55, 42, 30, 20,
-    35, 58, 74, 60, 44, 28,
-  ];
   return (
-    <div className="scene audv-scene">
-      <div className="audv-window">
-        <div className="audv-head">
-          <div className="title">
-            <span className="dot"></span> episodio-04-final.mp3
-          </div>
-          <div className="duration">02:14 / 18:36</div>
-        </div>
-        <div className="audv-wave">
-          {bars.map((h, i) => (
-            <div
-              key={i}
-              className={`bar ${i > 11 ? 'dim' : ''}`}
-              style={{ height: `${h}%` }}
-            ></div>
-          ))}
-        </div>
-        <div className="audv-transcript">
-          <div className="audv-line">
-            <span className="t">02:08</span>
-            <span>O ponto é que a gente precisa medir antes de</span>
-          </div>
-          <div className="audv-line active">
-            <span className="t">02:14</span>
-            <span>otimizar. Sem dado, é só intuição com confiança.</span>
-          </div>
-          <div className="audv-line">
-            <span className="t">02:21</span>
-            <span>Foi isso que mudou quando a gente começou a</span>
-          </div>
-        </div>
-        <div className="audv-tags">
-          <span className="audv-tag">capítulo</span>
-          <span className="audv-tag">resumo</span>
-          <span className="audv-tag">corte 0:14s</span>
-        </div>
-      </div>
+    <div className="scene audv-scene" style={{ padding: 0 }}>
+      <img
+        src="/assets/audiover_desktop.png"
+        alt="Audiover Dashboard"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
     </div>
   );
 }
