@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleTheme, theme }) => {
     <nav className={`r-nav ${scrolled ? "scrolled" : ""}`}>
       <div className="r-container r-nav-inner">
         <a href="#top" className="r-nav-logo" aria-label="RATEC">
-          <span className="r-nav-logo-mark">R</span>
+          <img src="/assets/logo.png" alt="RATEC Logo" style={{ height: 26, width: 'auto' }} />
           <span>RATEC</span>
         </a>
         <div className="r-nav-links">

@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="r-footer-grid">
           <div>
             <a href="#top" className="r-nav-logo" style={{ marginBottom: 16 }}>
-              <span className="r-nav-logo-mark">R</span>
+              <img src="/assets/logo.png" alt="RATEC Logo" style={{ height: 26, width: 'auto' }} />
               <span>RATEC</span>
             </a>
             <p style={{ fontSize: 14, color: 'var(--r-text-muted)', maxWidth: 320, marginTop: 16, lineHeight: 1.6 }}>
