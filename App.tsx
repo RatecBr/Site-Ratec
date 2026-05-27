@@ -1,47 +1,120 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Solutions from './components/Solutions';
-import Portfolio from './components/Portfolio';
-import AIConsultant from './components/AIConsultant';
-import About from './components/About';
+import Products from './components/Products';
+import Capabilities from './components/Capabilities';
+import Process from './components/Process';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
+import {
+  TweaksPanel,
+  TweakSection,
+  TweakRadio,
+  useTweaks,
+} from './components/TweaksPanel';
+
+interface TweakDefaults {
+  theme: 'dark' | 'light';
+  density: 'compact' | 'comfy' | 'spacious';
+  heroCopy: number;
+}
+
+const TWEAK_DEFAULTS: TweakDefaults = {
+  theme: 'dark',
+  density: 'comfy',
+  heroCopy: 0,
+};
 
 const App: React.FC = () => {
-  return (
-    <div className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <Solutions />
-      <Portfolio />
-      <AIConsultant />
-      <About />
-      
-      {/* Contact CTA */}
-      <section className="py-24 bg-gradient-to-b from-slate-950 to-purple-950/20">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-2xl mx-auto space-y-8 p-12 rounded-3xl border border-fuchsia-500/20 bg-glass shadow-[0_0_50px_rgba(217,70,239,0.1)]">
-            <h2 className="font-orbitron text-4xl font-bold leading-tight">
-              Pronto para levar sua marca para o <span className="text-fuchsia-400 neon-glow">Futuro?</span>
-            </h2>
-            <p className="text-slate-400">
-              Entre em contato conosco hoje mesmo e descubra como podemos ajudar a transformar sua visão em uma solução inteligente de alto impacto.
-            </p>
-            <a 
-              href="https://api.whatsapp.com/send/?phone=5562981173666&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+a+Ratec&type=phone_number&app_absent=0" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-block bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white font-bold py-4 px-12 rounded-full shadow-[0_0_30px_rgba(217,70,239,0.4)] transition-all transform hover:scale-105"
-            >
-              FALE COM UM ESPECIALISTA
-            </a>
-          </div>
-        </div>
-      </section>
+  const [tweaks, setTweak] = useTweaks<TweakDefaults>(TWEAK_DEFAULTS);
 
+  // Apply theme class to document element
+  useEffect(() => {
+    const root = document.documentElement;
+    if (tweaks.theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+  }, [tweaks.theme]);
+
+  // Apply density padding multiplier as a CSS variable on the document element
+  useEffect(() => {
+    const v = tweaks.density === 'compact' ? 0.72 : tweaks.density === 'spacious' ? 1.25 : 1;
+    document.documentElement.style.setProperty('--r-density', String(v));
+  }, [tweaks.density]);
+
+  // Scroll reveal intersection observer to animate sections into view
+  useEffect(() => {
+    const els = document.querySelectorAll('.r-reveal');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [tweaks.heroCopy]);
+
+  const toggleTheme = () => {
+    setTweak('theme', tweaks.theme === 'dark' ? 'light' : 'dark');
+  };
+
+  return (
+    <>
+      <Navbar onToggleTheme={toggleTheme} theme={tweaks.theme} />
+      <main>
+        <Hero copyIndex={tweaks.heroCopy} />
+        <Products />
+        <Capabilities />
+        <Process />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+
+      <TweaksPanel title="Ajustes RATEC">
+        <TweakSection label="Tema" />
+        <TweakRadio
+          label="Modo"
+          value={tweaks.theme}
+          onChange={(v) => setTweak('theme', v)}
+          options={[
+            { value: 'dark', label: 'Escuro' },
+            { value: 'light', label: 'Claro' },
+          ]}
+        />
+
+        <TweakSection label="Layout" />
+        <TweakRadio
+          label="Densidade"
+          value={tweaks.density}
+          onChange={(v) => setTweak('density', v)}
+          options={[
+            { value: 'compact', label: 'Compacto' },
+            { value: 'comfy', label: 'Padrão' },
+            { value: 'spacious', label: 'Espaçoso' },
+          ]}
+        />
+
+        <TweakSection label="Hero" />
+        <TweakRadio
+          label="Variação de Copy"
+          value={tweaks.heroCopy}
+          onChange={(v) => setTweak('heroCopy', Number(v))}
+          options={[
+            { value: 0, label: 'Estúdio' },
+            { value: 1, label: 'Produto' },
+            { value: 2, label: 'BR' },
+          ]}
+        />
+      </TweaksPanel>
+    </>
   );
 };
 
